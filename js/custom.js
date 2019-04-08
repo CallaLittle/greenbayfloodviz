@@ -55,10 +55,29 @@
 		})
 		.setView([44.527676, -87.993452], 13);
 
-	map.removeControl(map.zoomControl);
+	map.zoomControl.setPosition('topright')
 
-	new L.Control.Zoom({ position: 'topleft' }).addTo(map);
 
+	// L.Control.OpacSlider = L.Control.extend({
+	//     onAdd: function(map) {
+	//         var img = L.DomUtil.create('img');
+
+	//         img.src = '../../docs/images/logo.png';
+	//         img.style.width = '200px';
+
+	//         return img;
+	//     },
+
+	//     onRemove: function(map) {
+	//         // Nothing to do here
+	//     }
+	// });
+
+	// L.control.opacSlider = function(opts) {
+	//     return new L.Control.OpacSlider(opts);
+	// }
+
+	// L.control.opacSlider({ position: 'bottomleft' }).addTo(map);
 
 	//streets tileset
 	var cartoDB_Map = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
@@ -263,7 +282,7 @@
 		$('#replace').remove();
 		$('#colorLegend').append('<div id="replace" style="text-align: left;">');
 		$('#legendHeader').html(title);
-		$('#legendText').html('This shows the condition of the Green Bay dike based on different lake heights. This data is derived from a D.E.M of the Green Bay area and water levels at the specified lake levels.');
+		$('#legendText').html('This layer shows locations where the dike may breach for each flood level. Dike breaches were extracted from elevation data.');
 		$('#replace').append('<svg height="50" width="200">' +
 								'<line x1="2" y1="10" x2="27" y2="10" style="stroke:black;stroke-width:2" />' +
 								'<text x="37" y="14" fill="#000">Existing Dike</text>' +
@@ -399,10 +418,10 @@
 	// load sovi specific info into legend 
 	function loadSoviLegendData()
 	{
-		var title = 'SOVI';
+		var title = 'Social Vulnerability Index';
 		var colorArray = ['#ddd', '#fb6a4a', '#de2d26', '#a50f15'];
 		var classBreaks = ['No Data', 'Low', 'Medium', 'High'];
- 		var description = "Applying overlays of social vulnerability to natural hazards, based on human vulnerability to hazards based on 29 socioeconomic variables looking at a community's ability to cope with hazards (pre, during and post event).";
+ 		var description = "The Social Vulnerability Index (SoVI) is a metric to compare social vulnerability to natural hazards across the United States. It is calculated using 29 socioeconomic variables by the <a href='https://artsandsciences.sc.edu/geog/hvri/sovi%C2%AE-0' target='_blank'>Hazards and Vulnerability Research Institute</a> at the University of South Carolina. The data are primarily taken from the <a href='https://www.census.gov/' target='_blank'>US Census Bureau</a> and is thus displayed at census block level for each flood level.";
 
 
 		createLegend(colorArray, classBreaks, description, title);	
@@ -411,10 +430,10 @@
 	// load employment specific info legend 
 	function loadEmploymentLegendData()
 	{
-		var title = 'Businesses';
+		var title = 'Business';
 		var colorArray = ['#ddd', '#c994c7', '#df65b0', '#e7298a', '#980043'];
 		var classBreaks = ['No Data', '<100', '100 - 499', '500 - 999', '>1,000'];
-		var description = 'Overlays potentially affected business show the potential impacts of flood on businesses. Business data collected by the Bureau of Labor Statistics aggregated to census block groups. ';
+		var description = 'This is a measure of the impact of flooding on businesses. It maps the number of employees that work for each business within an affected area. Data originated from the <a href="https://www.bls.gov/" target="_blank">Bureau of Labor Statistics</a> and was downloaded from <a href="https://coast.noaa.gov/arcgis/rest/services/LakeLevels/Employees/MapServer" target="_blank">NOAA</a>. It is aggregated to census block groups.';
 
 		createLegend(colorArray, classBreaks, description, title);		
 	}
@@ -425,7 +444,7 @@
 		var title = 'Population Affected'
 		var colorArray = ['#ddd', '#bcbddc', '#9e9ac8', '#807dba', '#6a51a3', '#54278f', '#3f007d'];
 		var classBreaks = ['No Data', '1 - 100', '100 - 300', '300 - 800', '800 - 1,350', '1,350 - 2,220', '>2,500'];
-		var description = 'This is an estimate of number of people per block potentially affected by flooding. Using population data from the 2014 American Community Survey reallocated to parcels, including residential class. This was then compared to the percentage of the residential parcels flooded.';
+		var description = 'This is an estimate of number of people affected by flooding. Census block level population data were taken from the <a href="https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/2014/" target="_blank">2014 American Community Survey</a>. The number of people is based on the percentage of flooed area that is within a block. Non-residential parcels were removed from the calculation.';
 
 		createLegend(colorArray, classBreaks, description, title);		
 	} 
@@ -437,7 +456,7 @@
 		var title = 'Property Losses';
 		var colorArray = ['#ddd', '#fdd0a2', '#fdae6b', '#fd8d3c', '#e6550d', '#a63603'];
 		var classBreaks = ['$0', '$8,900 - $1.6 million', '$1.6 - $11 million', '$11 - $23 million', '$82 - $152 million', '>$152 million'];
-		var description = 'Overlays of potential property losses from flooding, based on improved structure value($USD).';
+		var description = 'This is an estimate of property loss from flooding. Improved structure values were taken from parcel data and aggregated to census block levels.';
 
 		createLegend(colorArray, classBreaks, description, title);		
 	}
@@ -450,7 +469,7 @@
 	
 		var colorArray = ['#ddd', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'];
 		var classBreaks = ['No Data', '$13,000 - $34,000', '$34,000 - $42,000', '$42,000 - $55,000', '$55,000 - $73,000', '$73,000 - $99,000', '>$99,000'];
-		var description = 'The median income households at a block level, based on the 2014 American Community Survey.';
+		var description = "This layer shows the median household income of an affected area's census block. Data were taken from the <a href='https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/2014/' target='_blank'>2014 American Community Survey</a>.";
 
 		createLegend(colorArray, classBreaks, description, title);		
 	}

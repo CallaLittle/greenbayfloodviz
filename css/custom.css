@@ -1,3 +1,19 @@
+.shadow {
+    z-index: 1;
+
+}
+
+.modal-header {
+    border-bottom: 1px solid #6ce4ff;
+}
+
+
+#dataOverlayButtons > .list-group-item {
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
 #navBar
 {
     background-color: #222222;
@@ -49,13 +65,13 @@
   border: solid 3px #3F3F3F; 
 }
 
-#opacityPanel
+/*#opacityPanel
 {
     margin-top: 59px;
     height: 52px;
     min-height: 52px;
     text-align: center;
-}
+}*/
 
 #sliderPanel
 {
@@ -66,14 +82,13 @@
 
 #buttonPanel
 {
-    height: 310px; 
+    /*height: 310px; */
     clear: right;
     text-align: left;
 }
 
 #range
 {
-/*    transform: rotate(270deg);*/
     height:50%;
     display: inline-block;
 }
@@ -84,13 +99,11 @@
 }
 
 
-#showInfoPanel
+/*#showInfoPanel
 {
     top: 379px;
     position: absolute;
-/*    border: 1px solid #16B4D8;*/
-/*    background-color: #222222;*/
-}
+}*/
 
 
 
@@ -101,7 +114,6 @@
     background-color: #222222;
     color:  #16B4D8;
     text-align: left;  
-    /*float: bottom;*/
 }
 
 #forward 
@@ -114,29 +126,20 @@
     float: left;
 }
 
-#map 
-{
-    height: 1000px;
-    width: 100%;
-    display: inline-block;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    margin-left: 6px;
-    margin-right: 6px;
-}
 
 #infoPanel
 {
     position: absolute;
-    top: 118px;
-    height: 200px; 
+    top: 75px;
+    left: 200px;
+/*    height: 200px; 
     text-align: left;
     z-index: 1; 
     left:207px;
     margin-right: .4%;
     color: #000;
     background-color: #F5F5F3;
-    border: solid 2px #16B4D8;
+    border: solid 2px #16B4D8;*/
 }
 
 .legendLabels
@@ -166,21 +169,22 @@
 #floodHeader
 {
     height: 50px;
+    width: 179px;
 }
 
 #stopPropPanel
 {
     position: relative;
-    width: 206px;
+    width: 192px;
     float: left;
     z-index: 1;
 }
 
 .panel 
 {
-    width: 200px;
+    /*width: 200px;*/
     opacity: .95;
-    background-color: #222222;
+    background-color: #222222db;
     border: solid 2px #16B4D8;
     border-radius: 5px;
     padding: .25%;
@@ -190,21 +194,23 @@
 
 #legendPanel
 {
-  z-index: 1;
+/*  z-index: 1;
   position: absolute;
   left: 206px;
   margin-top: 423px;
   margin-right: .4%;
   background-color: #F5F5F3;
   color: #000;
-  border: solid 2px #16B4D8;
+  border: solid 2px #16B4D8;*/
+    margin-top: 381px;
+    margin-left: 200px;
 }
 
-#legendHeader
+/*#legendHeader
 {
   color: #3aa7c0;
   display: inline-block;
-}
+}*/
 
 #legendClose
 {
@@ -263,17 +269,12 @@
     padding-bottom: 1px;
     padding-top: 1px;
     padding-left: 5px;
-    background-color: #222222;
+    background-color: transparent;
     color:  #16B4D8;
     text-align: left;
 
 }
-/*.btn-cstm-legend:hover
-{
-    background-color: #3F3F3F;
-    border: solid 1px #373739;
-    color: #d8f5fb;
-}*/
+
 
 
 .fa-lg
@@ -360,7 +361,7 @@
     border-radius: 2px; 
     opacity: 85%; 
 }
-
+/*
 button.close
 {
     background-color: #222222;
@@ -386,9 +387,9 @@ button.close:hover
 {
     background-color: #222222;
     color:  #16B4D8;  
-}
+}*/
 
-.leaflet-control-zoom
+/*.leaflet-control-zoom
 {
     position: relative;
     left: 197px;
@@ -413,11 +414,12 @@ button.close:hover
     display: inline-block;
     opacity: .95;
     box-shadow: none;
-}
+}*/
 
 .leaflet-bar
 {
-    box-shadow: none;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
 }
 
 .leaflet-bar a:last-child
@@ -427,9 +429,9 @@ button.close:hover
 
 .leaflet-bar a, .leaflet-bar a:hover
 {
-    background-color: #222222;
-    color:  #16B4D8;
-    border-bottom: 1px solid #00CFFF;
+    background-color: #333a40;
+    color: #24a2b7;
+/*    border-bottom: 1px solid #00CFFF;*/
 }
 
 
@@ -454,10 +456,6 @@ button.close:hover
     margin: 0;
 }
 
-.container-fluid
-{
-    padding-left: 41%;
-}
 
 .btn-group-vertical>.btn-group:after, .btn-toolbar:after, .clearfix:after, .container-fluid:after, .container:after, .dl-horizontal dd:after, .form-horizontal .form-group:after, .modal-footer:after, .modal-header:after, .nav:after, .navbar-collapse:after, .navbar-header:after, .navbar:after, .pager:after, .panel-body:after, .row:after {
      clear: none;
@@ -469,10 +467,6 @@ button.close:hover
     opacity: 1%;
 }
 
-/*.legendSpacer 
-{
-  width: 3px;
-}*/
 
 
 .ui-slider-handle
@@ -484,7 +478,7 @@ button.close:hover
     height:120px; 
     width: 20px; 
     z-index: 2; 
-    position: absolute; 
+    /*position: absolute; */
     float: right; 
     background: white ;
     border-radius: 3px;
@@ -492,12 +486,12 @@ button.close:hover
 
 #slider-vertical
 {
-    top:200px;  
-    height:170px; 
+    /*top:200px;  */
+    height:157px; 
     width: 20px; 
     z-index: 2; 
-    position: absolute; 
-    float: right; 
+    /*position: absolute; */
+/*    float: right; */
     background-color: #128AB3;
     left:15px;
     border-radius: 3px;
@@ -505,10 +499,13 @@ button.close:hover
 
 .ui-slider-label
 {
-  bottom: 0px;
+/*  bottom: 0px;
   position: relative;
   left: 20%;
-  height: 22px;
+  height: 22px;*/
+  padding-top: 0;
+  padding-bottom: 0;
+  color: white;
 }
 
 .slider-satelite
