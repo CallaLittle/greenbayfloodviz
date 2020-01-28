@@ -87,19 +87,25 @@
 		}).addTo(map);
 
 	//satellite tileset
-	var HERE_hybridDay = L.tileLayer('https://{s}.{base}.maps.cit.api.here.com/maptile/2.1/{type}/{mapID}/hybrid.day/{z}/{x}/{y}/{size}/{format}?app_id={app_id}&app_code={app_code}&lg={language}', {
-		attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
-		subdomains: '1234',
-		mapID: 'newest',
-		app_id: '4hRsdRmGBf2l2Hn2o1ET',
-		app_code: 'Am10DtpE3d21BS94dezWSg',
-		base: 'aerial',
+// 	var HERE_hybridDay = L.tileLayer('https://{s}.{base}.maps.cit.api.here.com/maptile/2.1/{type}/{mapID}/hybrid.day/{z}/{x}/{y}/{size}/{format}?app_id={app_id}&app_code={app_code}&lg={language}', {
+// 		attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
+// 		subdomains: '1234',
+// 		mapID: 'newest',
+// 		app_id: '4hRsdRmGBf2l2Hn2o1ET',
+// 		app_code: 'Am10DtpE3d21BS94dezWSg',
+// 		base: 'aerial',
+// 		maxZoom: 18,
+// 		minZoom: 12,
+// 		type: 'maptile',
+// 		language: 'eng',
+// 		format: 'png8',
+// 		size: '256'
+// 	}).setOpacity(0).addTo(map);
+
+	var HERE_hybridDay = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+		attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
 		maxZoom: 18,
-		minZoom: 12,
-		type: 'maptile',
-		language: 'eng',
-		format: 'png8',
-		size: '256'
+		minZoom: 12
 	}).setOpacity(0).addTo(map);
 
 
