@@ -80,7 +80,7 @@
 	// L.control.opacSlider({ position: 'bottomleft' }).addTo(map);
 
 	//streets tileset
-	var cartoDB_Map = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+	var cartoDB_Map = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
 		{
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 			subdomains: 'abcd',
