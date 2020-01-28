@@ -3,6 +3,10 @@
 
 }
 
+#map {
+    min-height: 97vh;
+}
+
 .modal-header {
     border-bottom: 1px solid #6ce4ff;
 }
@@ -205,12 +209,6 @@
     margin-top: 381px;
     margin-left: 200px;
 }
-
-/*#legendHeader
-{
-  color: #3aa7c0;
-  display: inline-block;
-}*/
 
 #legendClose
 {
