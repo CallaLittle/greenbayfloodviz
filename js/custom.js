@@ -127,20 +127,20 @@
 
 		//information panel is hidden when page initially loads
 		$('#infoPanel').hide();
+
+		//disable drag when on info panel
+		$('#stopPropPanel').on('mousedown dblclick wheel', function(e)
+		{
+			L.DomEvent.stopPropagation(e);
+		});
+
+		//disable drag when on legend
+		$('.panel').on('mousedown dblclick wheel', function(e)
+		{
+			L.DomEvent.stopPropagation(e);
+		});
 	});
 
-
-	//disable drag when on info panel
-	$('#stopPropPanel').on('mousedown dblclick mousewheel', function(e)
-	{
-		L.DomEvent.stopPropagation(e);
-	});
-
-	//disable drag when on legend
-	$('.panel').on('mousedown dblclick mousewheel', function(e)
-	{
-		L.DomEvent.stopPropagation(e);
-	});
 
 
 	// load information into the information panel on load

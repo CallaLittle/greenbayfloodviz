@@ -206,8 +206,10 @@
   background-color: #F5F5F3;
   color: #000;
   border: solid 2px #16B4D8;*/
-    margin-top: 381px;
+    /* margin-top: 381px; */
     margin-left: 200px;
+    position: absolute;
+    bottom: 10px;
 }
 
 #legendClose
