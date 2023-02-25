@@ -23,7 +23,7 @@
 	var breakPoints;
 	var aggregateFloodStats;
 
-	var depth = ['579.21 ft','582.79 ft','583.81 ft','584.97 ft','586.71 ft','589.19 ft','591.00 ft'];
+	var depth = ['579.21 ft','582.79 ft','583.81 ft','584.97 ft','586.71 ft','588.19 ft','591.00 ft'];
 
 	var floodLevelArray = ['Annual Mean for Lakes Michigan-Huron from 1918-2014',
 							'Record High Monthly Mean for Lakes Michigan-Huron from 1918-2014',
