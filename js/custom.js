@@ -23,7 +23,7 @@
 	var breakPoints;
 	var aggregateFloodStats;
 
-	var depth = ['579.21 ft','582.79 ft','583.81 ft','584.97 ft','586.71 ft','588.19 ft','591.00 ft'];
+	var depth = ['579.21 ft','582.79 ft','583.81 ft','584.97 ft','586.75 ft','588.20 ft','591.00 ft'];
 
 	var floodLevelArray = ['Annual Mean for Lakes Michigan-Huron from 1918-2014',
 							'Record High Monthly Mean for Lakes Michigan-Huron from 1918-2014',
@@ -38,7 +38,6 @@
 		prevIndex = 0;
 
 	var currentLayer = 'lakes';
-	// var hasBreakPoints = false;
 
 	//setting zoom and pan bounds 
 	var topleft = L.latLng(44.695755, -88.260835),
@@ -48,7 +47,6 @@
 	// initialize the map with geographical coordinates set on Green Bay
 	var map = L.map("map",
 		{
-			// maxBounds: new L.LatLngBounds([-20, -200],[70,-10]),
 			minZoom: 12,
 			maxZoom: 18,
 			maxBounds: bounds
@@ -499,7 +497,7 @@
 		{
 			$('#waterLevel').html(depth[currentIndex]);
 			$('#floodHeader').html(floodLevelArray[0]);
-			$('#numberOfDikeBreaks').html(aggregateFloodStats[currentIndex].numDikeBreaks);
+			// $('#numberOfDikeBreaks').html(aggregateFloodStats[currentIndex].numDikeBreaks); Removing
 			$('#totalFloodedArea').html(aggregateFloodStats[currentIndex].floodArea);
 			$('#maxPropertyLosses').html(aggregateFloodStats[currentIndex].maxPropLosses);
 			$('#peopleAffected').html(aggregateFloodStats[currentIndex].numPeopleAffected);
