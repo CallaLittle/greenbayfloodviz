@@ -23,7 +23,7 @@
 	var breakPoints;
 	var aggregateFloodStats;
 
-	var depth = ['579.21 ft','582.79 ft','583.81 ft','584.97 ft','583.81 ft','582.79 ft','591.00 ft'];
+	var depth = ['579.21 ft','582.79 ft','583.81 ft','584.97 ft','586.71 ft','589.19 ft','591.00 ft'];
 
 	var floodLevelArray = ['Annual Mean for Lakes Michigan-Huron from 1918-2014',
 							'Record High Monthly Mean for Lakes Michigan-Huron from 1918-2014',
@@ -45,7 +45,7 @@
 	  	bottomright = L.latLng(44.378889, -87.710832),
 	  	bounds = L.latLngBounds(topleft, bottomright);
 
-	// initialize the map with geographical coordinates set on madison
+	// initialize the map with geographical coordinates set on Green Bay
 	var map = L.map("map",
 		{
 			// maxBounds: new L.LatLngBounds([-20, -200],[70,-10]),
