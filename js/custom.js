@@ -421,7 +421,7 @@
 		var title = 'Social Vulnerability Index';
 		var colorArray = ['#ddd', '#fb6a4a', '#de2d26', '#a50f15'];
 		var classBreaks = ['No Data', 'Low', 'Medium', 'High'];
- 		var description = "The Social Vulnerability Index (SoVI) is a metric to compare social vulnerability to natural hazards across the United States. It is calculated using 29 socioeconomic variables by the <a href='https://artsandsciences.sc.edu/geog/hvri/sovi%C2%AE-0' target='_blank'>Hazards and Vulnerability Research Institute</a> at the University of South Carolina. The data are primarily taken from the <a href='https://www.census.gov/' target='_blank'>US Census Bureau</a> and is thus displayed at census block level for each flood level.";
+ 		var description = "The Social Vulnerability Index (SoVI) is a metric to compare social vulnerability to natural hazards across the United States. It is calculated using 29 socioeconomic variables by the <a href='https://artsandsciences.sc.edu/geog/hvri/sovi%C2%AE-0' target='_blank'>Hazards and Vulnerability Research Institute</a> at the University of South Carolina. The data are primarily taken from the <a href='https://www.census.gov/' target='_blank'>US Census Bureau</a>. Vulnerability is displayed at census block group level for each flood level.";
 
 
 		createLegend(colorArray, classBreaks, description, title);	
@@ -433,7 +433,7 @@
 		var title = 'Business';
 		var colorArray = ['#ddd', '#c994c7', '#df65b0', '#e7298a', '#980043'];
 		var classBreaks = ['No Data', '<100', '100 - 499', '500 - 999', '>1,000'];
-		var description = 'This is a measure of the impact of flooding on businesses. It maps the number of employees that work for each business within an affected area. Data originated from the <a href="https://www.bls.gov/" target="_blank">Bureau of Labor Statistics</a> and was downloaded from <a href="https://coast.noaa.gov/arcgis/rest/services/LakeLevels/Employees/MapServer" target="_blank">NOAA</a>. It is aggregated to census block groups.';
+		var description = 'This is a measure of the impact of flooding on businesses. It maps the number of employees that work for each business within an affected area. Data originated from the <a href="https://www.bls.gov/" target="_blank">Bureau of Labor Statistics</a> and was downloaded from <a href="https://coast.noaa.gov/arcgis/rest/services/LakeLevels/Employees/MapServer" target="_blank">NOAA</a>. It is displayed at census block group level.';
 
 		createLegend(colorArray, classBreaks, description, title);		
 	}
@@ -444,7 +444,7 @@
 		var title = 'Population Affected'
 		var colorArray = ['#ddd', '#bcbddc', '#9e9ac8', '#807dba', '#6a51a3', '#54278f', '#3f007d'];
 		var classBreaks = ['No Data', '1 - 100', '100 - 300', '300 - 800', '800 - 1,350', '1,350 - 2,220', '>2,500'];
-		var description = 'This is an estimate of number of people affected by flooding. Census block level population data were taken from the <a href="https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/2014/" target="_blank">2014 American Community Survey</a>. The number of people is based on the percentage of flooed area that is within a block. Non-residential parcels were removed from the calculation.';
+		var description = 'This is an estimate of number of people affected by flooding. Census block group level population data were taken from the <a href="https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/2014/" target="_blank">2014 American Community Survey</a>. The number of people is based on the percentage of flooded area that is within a block group. Non-residential parcels were removed from the calculation.';
 
 		createLegend(colorArray, classBreaks, description, title);		
 	} 
@@ -453,10 +453,10 @@
 	function loadPropertyLossesLegendData()
 	{
 		console.log('property loss data')
-		var title = 'Property Losses';
+		var title = 'Property Loss';
 		var colorArray = ['#ddd', '#fdd0a2', '#fdae6b', '#fd8d3c', '#e6550d', '#a63603'];
 		var classBreaks = ['$0', '$8,900 - $1.6 million', '$1.6 - $11 million', '$11 - $23 million', '$82 - $152 million', '>$152 million'];
-		var description = 'This is an estimate of property loss from flooding. Improved structure values were taken from parcel data and aggregated to census block levels.';
+		var description = 'This is an estimate of property lost from flooding. Improved structure values were taken from parcel data and aggregated to the census block group level.';
 
 		createLegend(colorArray, classBreaks, description, title);		
 	}
@@ -465,11 +465,11 @@
 	function loadIncomeLegendData()
 	{
 		console.log('income data')
-		var title = 'Household Income';
+		var title = 'Median Household Income';
 	
 		var colorArray = ['#ddd', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'];
 		var classBreaks = ['No Data', '$13,000 - $34,000', '$34,000 - $42,000', '$42,000 - $55,000', '$55,000 - $73,000', '$73,000 - $99,000', '>$99,000'];
-		var description = "This layer shows the median household income of an affected area's census block. Data were taken from the <a href='https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/2014/' target='_blank'>2014 American Community Survey</a>.";
+		var description = "This layer shows the median household income by census block group. Data were taken from the <a href='https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/2014/' target='_blank'>2014 American Community Survey</a>.";
 
 		createLegend(colorArray, classBreaks, description, title);		
 	}
