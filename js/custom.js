@@ -11,15 +11,13 @@
 					 'data/floods/v6.geojson',
 					 'data/floods/v7.geojson'];
 
-	var dikeFileArray= ['data/breakpoints.geojson',
-						'data/manuallyClippedDike.geojson'];
+	var dikeFile = 'data/dike.geojson'
 
 	var aggregateFloodStatistics = 'data/floods/aggregateFloodStatistics.json';
 
 	//map layer variables
 	var floodDataArray = [];
 	var dike;
-	var baseDike;
 	var breakPoints;
 	var aggregateFloodStats;
 
@@ -165,12 +163,12 @@
 	$('#breaks').on('click', function()
 	{
 		turnOnFloods();
-		updateDikeBreaks();
+		turnOnDike();
 		map.on('zoomend ', function(e) 
 		{
-	         if ( map.getZoom() > 15 ){ dike.setStyle({weight: 4})}
-	         else if ( map.getZoom() <= 15 ){ dike.setStyle({weight: 2})}
-	    });
+			if ( map.getZoom() > 15 ){ dike.setStyle({weight: 4})}
+			else if ( map.getZoom() <= 15 ){ dike.setStyle({weight: 2})}
+		});
 	});
 
 	//load sovi when clicked
@@ -282,16 +280,14 @@
 	// show the dike legend when question is clicked
 	$('#dikeBreakInfo').on('click', function()
 	{
-		var title = 'Dike Breaks';
+		var title = 'Dike Location';
 		$('#replace').remove();
 		$('#colorLegend').append('<div id="replace" style="text-align: left;">');
 		$('#legendHeader').html(title);
-		$('#legendText').html('This layer shows locations where the dike may breach for each flood level. Dike breaches were extracted from elevation data.');
-		$('#replace').append('<svg height="50" width="200">' +
+		$('#legendText').html('This layer shows locations where the dike may breach for each flood level.');
+		$('#replace').append('<svg height="20" width="200">' +
 								'<line x1="2" y1="10" x2="27" y2="10" style="stroke:black;stroke-width:2" />' +
 								'<text x="37" y="14" fill="#000">Existing Dike</text>' +
-								'<line x1="2" y1="30" x2="27" y2="30" style="stroke:rgb(255,0,0);stroke-width:1"/>' +
-								'<text x="37" y="34" fill="#000">Breached Dike</text>' +
 							'</svg>');
 
 		showLegend();
@@ -509,7 +505,7 @@
 	{
 		$('#waterLevel').html(depth[currentIndex]);
 		$('#floodHeader').html(floodLevelArray[currentIndex]);
-		$('#numberOfDikeBreaks').html(aggregateFloodStats[currentIndex].numDikeBreaks);
+		// $('#numberOfDikeBreaks').html(aggregateFloodStats[currentIndex].numDikeBreaks); Removing
 		$('#totalFloodedArea').html(aggregateFloodStats[currentIndex].floodArea);
 		$('#maxPropertyLosses').html(aggregateFloodStats[currentIndex].maxPropLosses);
 		$('#peopleAffected').html(aggregateFloodStats[currentIndex].numPeopleAffected);
@@ -531,6 +527,7 @@
 	{
 		HERE_hybridDay.setOpacity(0);
 		$('#OPslide').val(0)
+
 	};
 
 
@@ -666,14 +663,7 @@ function createFloodLevelSlider()
 					map.removeLayer(floodDataArray[i]);
 				};
 			};
-
-			//check whether map has breakpoints
-			//update if they're found
-			if(map.hasLayer(dike))
-			{
-				updateDikeBreaks();
-			};
-		};
+		}
 
 		if(currentLayer != 'lakes')
 		{
@@ -714,25 +704,26 @@ function createFloodLevelSlider()
 	// update and remove layers //
 	//////////////////////////////
 
-	function updateDikeBreaks()
+	function turnOnDike()
 	{
-		if(!map.hasLayer(baseDike))
-		{
-			baseDike.addTo(map);
-		};
-
-		dike.addTo(map);
+		//style dike like based on opacity of satellite
+		var value = $('#OPslide').val();
 		dike.eachLayer(function(layer)
 		{
-			if(layer.feature.properties.Name == Number(currentIndex)+1)
+			if(value > .7)
 			{
-				layer.addTo(map);
-			};
-			if(layer.feature.properties.Name != Number(currentIndex)+1)
+				layer.setStyle({color: '#eee'});
+			}
+			else
 			{
-				map.removeLayer(layer)
-			};
+				layer.setStyle({color: '#333'});
+			}
 		});
+
+		if(!map.hasLayer(dike))
+		{
+			dike.addTo(map);
+		};
 	};
 
 
@@ -956,7 +947,7 @@ function createFloodLevelSlider()
 	//get the map data
 	function getData()
 	{
-		var floodColor =  '#0D6C8C';
+		var floodColor =  '#128AB3'; 
 		//flood level 1
 		$.ajax(fileArray[0],
 		{
@@ -974,7 +965,7 @@ function createFloodLevelSlider()
 		});
 
 		//dike
-	    $.ajax(dikeFileArray[1],
+	  $.ajax(dikeFile,
 		{
 			dataType: 'json',
 			success: function(response)
@@ -986,13 +977,9 @@ function createFloodLevelSlider()
 						return {color: '#333', weight: 2, opacity: 1, clickable: false};
 					}
 				});
-				baseDike = L.geoJson(response,
-				{
-					style: function (feature)
-					{
-						return {color: 'red', weight: 1, opacity: 1, clickable: false};
-					}
-				});
+			},
+			error: function(response) {
+				console.log('Unable to add dike')
 			}
 		});
 
@@ -1093,19 +1080,4 @@ function createFloodLevelSlider()
 			}
 		});
 
-		//breakpoints
-		$.ajax(dikeFileArray[0],
-		{
-			dataType: 'json',
-			success: function(response)
-			{
-				breakPoints = L.geoJson(response,
-				{
-					style: function (feature)
-					{
-						return {fill: '#755144'};
-					}
-				});
-			}
-		});
 	};
