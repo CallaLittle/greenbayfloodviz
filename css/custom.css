@@ -69,13 +69,6 @@
   border: solid 3px #3F3F3F; 
 }
 
-/*#opacityPanel
-{
-    margin-top: 59px;
-    height: 52px;
-    min-height: 52px;
-    text-align: center;
-}*/
 
 #sliderPanel
 {
@@ -103,14 +96,6 @@
 }
 
 
-/*#showInfoPanel
-{
-    top: 379px;
-    position: absolute;
-}*/
-
-
-
 .btn-cstm-info
 {
     width: 194px;
@@ -136,14 +121,6 @@
     position: absolute;
     top: 75px;
     left: 200px;
-/*    height: 200px; 
-    text-align: left;
-    z-index: 1; 
-    left:207px;
-    margin-right: .4%;
-    color: #000;
-    background-color: #F5F5F3;
-    border: solid 2px #16B4D8;*/
 }
 
 .legendLabels
@@ -361,60 +338,6 @@
     border-radius: 2px; 
     opacity: 85%; 
 }
-/*
-button.close
-{
-    background-color: #222222;
-    color:  #16B4D8;
-}
-button.close:hover
-{
-    color:  #249EB2;
-}
-.close 
-{
-    float: right;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 0px 0 #222222;
-    filter: alpha(opacity=20);
-    opacity: .99;
-}
-
-.close:focus, .close:hover 
-{
-    background-color: #222222;
-    color:  #16B4D8;  
-}*/
-
-/*.leaflet-control-zoom
-{
-    position: relative;
-    left: 197px;
-}
-
-.leaflet-control-zoom-in
-{
-    margin-top: 49px;
-    border-right:solid 2px #16B4D8 ;
-    border-left:solid 2px #16B4D8 ;
-    border-top:solid 2px #16B4D8; 
-    display: inline-block;
-    opacity: .95;
-    box-shadow: none;
-}
-
-.leaflet-control-zoom-out
-{
-    border-right:solid 2px #16B4D8 ;
-    border-left:solid 2px #16B4D8 ;
-    border-top:solid 2px #16B4D8;
-    display: inline-block;
-    opacity: .95;
-    box-shadow: none;
-}*/
 
 .leaflet-bar
 {
@@ -430,9 +353,7 @@ button.close:hover
 {
     background-color: #333a40;
     color: #24a2b7;
-/*    border-bottom: 1px solid #00CFFF;*/
 }
-
 
 .leaflet-bar a.leaflet-disabled 
 {
@@ -477,7 +398,6 @@ button.close:hover
     height:120px; 
     width: 19px; 
     z-index: 2; 
-    /*position: absolute; */
     float: right; 
     background: white ;
     border-radius: 3px 3px 0px 0px;
@@ -485,12 +405,9 @@ button.close:hover
 
 #slider-vertical
 {
-    /*top:200px;  */
     height:157px; 
     width: 20px; 
     z-index: 2; 
-    /*position: absolute; */
-/*    float: right; */
     background: linear-gradient(180deg, rgba(193,218,226,1) 0%, rgba(166,211,224,1) 14%, rgba(136,197,215,1) 28%, rgba(112,186,208,1) 42%, rgba(93,177,203,1) 56%, rgba(77,170,199,1) 70%, rgba(45,155,189,1) 84%);
     left:15px;
     border-radius: 3px;
@@ -498,10 +415,6 @@ button.close:hover
 
 .ui-slider-label
 {
-/*  bottom: 0px;
-  position: relative;
-  left: 20%;
-  height: 22px;*/
   padding-top: 0;
   padding-bottom: 0;
   color: white;
@@ -558,7 +471,3 @@ input[type=range]:focus::-webkit-slider-runnable-track
 }
 
 
-
-/*blue #16B4D8
-
-whitish #F5F5F3*/

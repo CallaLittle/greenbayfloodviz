@@ -491,7 +491,6 @@
 		{
 			$('#waterLevel').html(depth[currentIndex]);
 			$('#floodHeader').html(floodLevelArray[0]);
-			// $('#numberOfDikeBreaks').html(aggregateFloodStats[currentIndex].numDikeBreaks); Removing
 			$('#totalFloodedArea').html(aggregateFloodStats[currentIndex].floodArea);
 			$('#maxPropertyLosses').html(aggregateFloodStats[currentIndex].maxPropLosses);
 			$('#peopleAffected').html(aggregateFloodStats[currentIndex].numPeopleAffected);
@@ -503,7 +502,6 @@
 	{
 		$('#waterLevel').html(depth[currentIndex]);
 		$('#floodHeader').html(floodLevelArray[currentIndex]);
-		// $('#numberOfDikeBreaks').html(aggregateFloodStats[currentIndex].numDikeBreaks); Removing
 		$('#totalFloodedArea').html(aggregateFloodStats[currentIndex].floodArea);
 		$('#maxPropertyLosses').html(aggregateFloodStats[currentIndex].maxPropLosses);
 		$('#peopleAffected').html(aggregateFloodStats[currentIndex].numPeopleAffected);
@@ -570,7 +568,7 @@ function createFloodLevelSlider()
 {	
 // set slider attributes
 	$('#slider-holder').append('<div id="slider-vertical">')
-	$( "#slider-vertical" ).slider
+	$("#slider-vertical" ).slider
 		({
      	 	orientation: "vertical",
       		range: "max",
@@ -581,14 +579,14 @@ function createFloodLevelSlider()
       		slide: function( event, ui ) 
 		    {
 
-		        if(ui.value == -1)
-		        {
-		        	ui.value = 0;
-		        	$('#slider-vertical').remove();
-		        	createFloodLevelSlider();
+				if(ui.value == -1)
+				{
+					ui.value = 0;
+					$('#slider-vertical').remove();
+					createFloodLevelSlider();
 
-		        };
-		        prevIndex = currentIndex;
+				};
+				prevIndex = currentIndex;
 				currentIndex =  ui.value;
 				updateFloodLayers();
 
@@ -752,18 +750,20 @@ function createFloodLevelSlider()
 			
 			var soviIndex = layer.feature.properties.sovi_3cl;
 
+			setCommonStyle(layer);
+
 			//no data
 			if(!soviIndex)
 			{
-				layer.setStyle({fillColor: colorArray[0], fillOpacity: .65, stroke: false});	
+				layer.setStyle({fillColor: colorArray[0]});	
 			}
 			
 			//sovi classes
 			switch(soviIndex)
 			{
-				case 'Low': layer.setStyle({fillColor: colorArray[1], fillOpacity: .65, stroke: false}); break;
-				case 'Medium': layer.setStyle({fillColor: colorArray[2], fillOpacity: .65, stroke: false}); break;
-				case 'High': layer.setStyle({fillColor: colorArray[3], fillOpacity: .65, stroke: false}); break;
+				case 'Low': layer.setStyle({fillColor: colorArray[1]}); break;
+				case 'Medium': layer.setStyle({fillColor: colorArray[2]}); break;
+				case 'High': layer.setStyle({fillColor: colorArray[3]}); break;
 			};
 
 		});
@@ -783,20 +783,22 @@ function createFloodLevelSlider()
 		{	
 			var blsIndex = layer.feature.properties.employment;
 
+			setCommonStyle(layer);
+
 			//nodata
 			if(!blsIndex)
 			{
-				layer.setStyle({fillColor: colorArray[0], fillOpacity: .7, stroke: false});	
+				layer.setStyle({fillColor: colorArray[0]});	
 			}
 			
 			//bls classes
 			switch(blsIndex)
 			{
-				case '<100': layer.setStyle({fillColor: colorArray[1], fillOpacity: .7, stroke: false}); break;
-				case '100-499': layer.setStyle({fillColor: colorArray[2], fillOpacity: .7, stroke: false}); break;
-				case '500-999': layer.setStyle({fillColor: colorArray[3], fillOpacity: .7, stroke: false}); break;
-				case '1,000 or Greater': layer.setStyle({fillColor: colorArray[4], fillOpacity: .7, stroke: false}); break;
-				case 'Suppressed': layer.setStyle({fillColor: colorArray[0], fillOpacity: .7, stroke: false}); break;
+				case '<100': layer.setStyle({fillColor: colorArray[1]}); break;
+				case '100-499': layer.setStyle({fillColor: colorArray[2]}); break;
+				case '500-999': layer.setStyle({fillColor: colorArray[3]}); break;
+				case '1,000 or Greater': layer.setStyle({fillColor: colorArray[4]}); break;
+				case 'Suppressed': layer.setStyle({fillColor: colorArray[0]}); break;
 			};
 		});
 	};
@@ -820,30 +822,32 @@ function createFloodLevelSlider()
 			// console.log(layer.feature.properties.TOTAL_PEOP)
 			var popIndex = layer.feature.properties.affected_p;
 
+			setCommonStyle(layer);
+
 			//nodata
 			if(popIndex == 0)
 			{
-				layer.setStyle({fillColor: colorArray[0], fillOpacity: .5, stroke: false});	
+				layer.setStyle({fillColor: colorArray[0], fillOpacity: .5});	
 			}
 			else if(popIndex < 100)
 			{ 
-				layer.setStyle({fillColor: colorArray[1], fillOpacity: .65, stroke: false}); 
+				layer.setStyle({fillColor: colorArray[1]}); 
 			}
 			else if(popIndex < 300)
 			{
-				layer.setStyle({fillColor: colorArray[2], fillOpacity: .65, stroke: false}); 
+				layer.setStyle({fillColor: colorArray[2]}); 
 			}
 			else if(popIndex < 800)
 			{
-				layer.setStyle({fillColor: colorArray[3], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[3]});
 			}
 			else if(popIndex < 1350)
 			{
-				layer.setStyle({fillColor: colorArray[4], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[4]});
 			}
 			else if(popIndex < 2220)
 			{
-				layer.setStyle({fillColor: colorArray[5], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[5]});
 			}
 		});
 	};
@@ -863,31 +867,33 @@ function createFloodLevelSlider()
 		floodDataArray[currentIndex].eachLayer(function(layer)
 		{
 			var propIndex = layer.feature.properties.max_proper;
-			
+
+			setCommonStyle(layer);
+
 			//affected pop classes
 			if(propIndex == 0)
 			{
-				layer.setStyle({fillColor: colorArray[0], fillOpacity: .65, stroke: false});	
+				layer.setStyle({fillColor: colorArray[0]});	
 			}
 			else if(propIndex < 1600000)
 			{ 
-				layer.setStyle({fillColor: colorArray[1], fillOpacity: .65, stroke: false}); 
+				layer.setStyle({fillColor: colorArray[1]}); 
 			}
 			else if(propIndex < 11000000)
 			{
-				layer.setStyle({fillColor: colorArray[2], fillOpacity: .65, stroke: false}); 
+				layer.setStyle({fillColor: colorArray[2]}); 
 			}
 			else if(propIndex < 23000000)
 			{
-				layer.setStyle({fillColor: colorArray[3], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[3]});
 			}
 			else if(propIndex < 82000000)
 			{
-				layer.setStyle({fillColor: colorArray[4], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[4]});
 			}
 			else if(propIndex < 152000000)
 			{
-				layer.setStyle({fillColor: colorArray[5], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[5]});
 			};
 		});
 	};
@@ -908,33 +914,39 @@ function createFloodLevelSlider()
 		{	
 			var incomeIndex = layer.feature.properties.median_inc;
 
+			setCommonStyle(layer);
+
 			//income of 0
 			if(incomeIndex == 0)
 			{
-				layer.setStyle({fillColor: colorArray[0], fillOpacity: .65, stroke: false});	
+				layer.setStyle({fillColor: colorArray[0]});	
 			}
 			else if(incomeIndex < 34000)
 			{ 
-				layer.setStyle({fillColor: colorArray[1], fillOpacity: .65, stroke: false}); 
+				layer.setStyle({fillColor: colorArray[1]}); 
 			}
 			else if(incomeIndex < 42000)
 			{
-				layer.setStyle({fillColor: colorArray[2], fillOpacity: .65, stroke: false}); 
+				layer.setStyle({fillColor: colorArray[2]}); 
 			}
 			else if(incomeIndex< 55000)
 			{
-				layer.setStyle({fillColor: colorArray[3], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[3]});
 			}
 			else if(incomeIndex < 73000)
 			{
-				layer.setStyle({fillColor: colorArray[4], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[4]});
 			}
 			else if(incomeIndex < 99000)
 			{
-				layer.setStyle({fillColor: colorArray[5], fillOpacity: .65, stroke: false});
+				layer.setStyle({fillColor: colorArray[5]});
 			}
 		});
 	};
+
+	function setCommonStyle(layer) {
+		layer.setStyle({fillOpacity: .65, stroke: true, color: '#eee', weight: 2})
+	}
 
 
 
