@@ -452,7 +452,6 @@
 	// load property lost data into legend
 	function loadPropertyLossesLegendData()
 	{
-		console.log('property loss data')
 		var title = 'Property Loss';
 		var colorArray = ['#ddd', '#fdd0a2', '#fdae6b', '#fd8d3c', '#e6550d', '#a63603'];
 		var classBreaks = ['$0', '$8,900 - $1.6 million', '$1.6 - $11 million', '$11 - $23 million', '$82 - $152 million', '>$152 million'];
@@ -464,7 +463,6 @@
 	// load income data into legend
 	function loadIncomeLegendData()
 	{
-		console.log('income data')
 		var title = 'Median Household Income';
 	
 		var colorArray = ['#ddd', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'];
